@@ -1,0 +1,18 @@
+.selectTopic {
+  padding-left: 4vw;
+  border: 1px solid red;
+}
+
+.selectTopic button:not(:last-child) {
+  margin-right: 15px;
+}
+
+.tweets {
+  width: "100%";
+  min-height: "100vh";
+  display: "grid";
+  grid-template-columns: "repeat(3; 1fr)";
+  gap: "30px";
+  padding: "10px 30px";
+  border: "1px solid red";
+}
