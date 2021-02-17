@@ -1,9 +1,27 @@
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Tweet from "../components/tweet/index";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 export default function Home() {
+  const [api, setApi] = useState([]);
+  const [keyword, setKeyword] = useState("govtech");
+  const tweetsRef = useRef(null);
+  useEffect(() => {
+    const getData = async () => {
+      const API = `https://puentech.herokuapp.com/api/v1/tweets/${keyword}?limit=10`;
+      try {
+        const data = await fetch(API).then((response) => response.json());
+        setApi(data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getData();
+  }, [keyword]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,17 +36,33 @@ export default function Home() {
           {" "}
           Selecciona Un Tema
         </Typography>
-        <Button variant="contained" color="primary">
+        <Button
+          onClick={() => setKeyword("govtech")}
+          variant="contained"
+          color="primary"
+        >
           #GOVTECH
         </Button>
-        <Button variant="contained" color="primary">
+        <Button
+          onClick={() => setKeyword("tech")}
+          variant="contained"
+          color="primary"
+        >
           #TECH
         </Button>
-        <Button variant="contained" color="primary">
+        <Button
+          onClick={() => setKeyword("facebook")}
+          variant="contained"
+          color="primary"
+        >
           #FACEBOOK
         </Button>
       </section>
-      <section className={styles.tweets}></section>
+      <section ref={tweetsRef} className={styles.tweets}>
+        {api.map((tweet) => (
+          <Tweet key={tweet._id} {...tweet} />
+        ))}
+      </section>
     </div>
   );
 }

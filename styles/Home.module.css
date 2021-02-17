@@ -8,11 +8,11 @@
 }
 
 .tweets {
-  width: "100%";
-  min-height: "100vh";
-  display: "grid";
-  grid-template-columns: "repeat(3; 1fr)";
-  gap: "30px";
-  padding: "10px 30px";
-  border: "1px solid red";
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  gap: 30px;
+  padding: 10px 30px;
+  border: 1px solid red;
 }
