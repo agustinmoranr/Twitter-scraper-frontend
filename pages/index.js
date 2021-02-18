@@ -63,6 +63,13 @@ export default function Home() {
         >
           #FACEBOOK
         </Button>
+        <Button
+          onClick={() => setKeyword("whatsapp")}
+          variant="contained"
+          color="primary"
+        >
+          #WHATSAPP
+        </Button>
       </section>
       <section className={styles.tweets}>
         {tweets.map((tweet, index) => {

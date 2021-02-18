@@ -1,6 +1,6 @@
 .selectTopic {
   padding-left: 4vw;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .selectTopic button:not(:last-child) {
@@ -14,7 +14,7 @@
   grid-template-columns: repeat(3, 30%);
   gap: 30px;
   padding: 10px 30px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .tweetContainer {
