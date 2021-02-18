@@ -12,7 +12,8 @@ export default function Home() {
 
   const { loading, error, tweets, hasMore } = useQueryTweets(
     keyword,
-    pageNumber
+    pageNumber,
+    setPageNumber
   );
   const observer = useRef();
   const lastTweetElementRef = useCallback(
@@ -29,44 +30,61 @@ export default function Home() {
     [loading, hasMore]
   );
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Twitter Scraper</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Typography align="center" variant="h3" component="h1">
+      <Typography
+        className={styles.title}
+        align="center"
+        variant="h3"
+        component="h1"
+        paragraph={true}
+      >
         Twitter Scraper
       </Typography>
       <section className={styles.selectTopic}>
         <Typography variant="h4" component="h2">
           {" "}
-          Selecciona Un Tema
+          Selecciona un tema
+        </Typography>
+        <Typography
+          className={styles.description}
+          color="primary"
+          variant="body1"
+          component="p"
+          paragraph={true}
+        >
+          Las etiquetas definen los tweets que verás. Por defecto se selecciona
+          la etiqueta #GOVTECH, por lo que veras tweets que contengan la palabra
+          govtech o el hashtag #govtech
         </Typography>
         <Button
           onClick={() => setKeyword("govtech")}
           variant="contained"
-          color="primary"
+          color={keyword === "govtech" ? "secondary" : "primary"}
         >
           #GOVTECH
         </Button>
         <Button
           onClick={() => setKeyword("tech")}
           variant="contained"
-          color="primary"
+          color={keyword === "tech" ? "secondary" : "primary"}
         >
           #TECH
         </Button>
         <Button
           onClick={() => setKeyword("facebook")}
           variant="contained"
-          color="primary"
+          color={keyword === "facebook" ? "secondary" : "primary"}
         >
           #FACEBOOK
         </Button>
         <Button
           onClick={() => setKeyword("whatsapp")}
           variant="contained"
-          color="primary"
+          color={keyword === "whatsapp" ? "secondary" : "primary"}
         >
           #WHATSAPP
         </Button>

@@ -1,22 +1,48 @@
+.title {
+  background: #2c387e;
+  color: white;
+}
 .selectTopic {
   padding-left: 4vw;
-  /* border: 1px solid red; */
 }
-
+.selectTopic button {
+  margin-bottom: 10px;
+}
 .selectTopic button:not(:last-child) {
   margin-right: 15px;
 }
-
+.description {
+  font-style: italic;
+  font-size: 1rem;
+}
 .tweets {
   width: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(3, 30%);
-  gap: 30px;
+  gap: 20px;
   padding: 10px 30px;
   /* border: 1px solid red; */
 }
 
 .tweetContainer {
   min-height: 300px;
+}
+
+@media screen and (max-width: 1024px) {
+  .tweets {
+    grid-template-columns: repeat(2, 50%);
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .tweets {
+    grid-template-columns: repeat(1, 100%);
+    gap: 0px;
+    padding: 10px 0px;
+  }
+  .tweetContainer {
+    min-height: 250px;
+  }
 }

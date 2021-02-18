@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const useQueryTweets = (keyword, pageNumber) => {
+const useQueryTweets = (keyword, pageNumber, setPageNumber) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [tweets, setTweets] = useState([]);
@@ -8,6 +8,7 @@ const useQueryTweets = (keyword, pageNumber) => {
 
   useEffect(() => {
     setTweets([]);
+    setPageNumber(1);
   }, [keyword]);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ const useQueryTweets = (keyword, pageNumber) => {
     axios({
       method: "GET",
       url: API,
-      params: { limit: 10, page: pageNumber },
+      params: { limit: 5, page: pageNumber },
       cancelToken: new axios.CancelToken((c) => (cancel = c)),
     })
       .then((res) => {
